@@ -1,0 +1,15 @@
+nav {
+  color: white;
+
+  .navbar-brand {
+    a, a:hover {
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+
+  #persona {
+    margin-top: 6px;
+  }
+}

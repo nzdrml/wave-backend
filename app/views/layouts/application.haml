@@ -1,0 +1,22 @@
+!!!
+%html{ :lang => 'en' }
+  %head
+    = stylesheet_link_tag 'application', :media => 'all'
+    = javascript_include_tag 'application'
+    %meta{ :charset => 'utf-8' }/
+    %meta{ :content => 'IE=edge', :'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ :content => 'width=device-width, initial-scale=1', :name => 'viewport'}/
+    %title RideWave Admin
+
+  %body
+    .container
+      %nav.navbar.navbar-dark.bg-primary
+        .navbar-brand= link_to 'RideWave Admin', '#'
+        %ul.nav.navbar-nav
+          %li.nav-item= link_to 'Trips', :trips, :class => 'nav-link'
+          %li.nav-item= link_to 'Users', :users, :class => 'nav-link'
+          %li.nav-item= link_to 'Routes', :routes, :class => 'nav-link'
+          %li.nav-item= link_to 'Points', :points, :class => 'nav-link'
+        #persona.float-md-right Hi, Enzo
+      .row
+        = yield

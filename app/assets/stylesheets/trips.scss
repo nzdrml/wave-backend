@@ -1,0 +1,29 @@
+#trips {
+  margin-top: 10px;
+
+  .name{
+    display: inline-block;
+  }
+
+  .payment {
+    display: inline-block;
+    color: red;
+  }
+
+  .paid {
+    color: green;
+  }
+
+  .driver {
+    display: inline-block;
+    vertical-align: top;
+    img {
+      width: 60px;
+    }
+  }
+
+  .card-text {
+    display: inline-block;
+    vertical-align: top;
+  }
+}

@@ -1,0 +1,18 @@
+#points.col-md-12
+  = button_tag '+ New Point', :type => 'button', :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Point
+        %th
+    %tbody
+      - Point.all.each do |point|
+        %tr
+          %td= point.id
+          %td= point.name
+          %td= link_to 'Edit', '#'

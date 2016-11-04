@@ -1,0 +1,22 @@
+#routes.col-md-12
+  = button_tag '+ New Route', :type => 'button', :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Pickup
+        %th Drop off
+        %th Price
+        %th
+    %tbody
+      - Route.all.each do |route|
+        %tr
+          %td= route.id
+          %td= route.origin.name
+          %td= route.destination.name
+          %td= number_to_currency route.price, :unit => 'Php '
+          %td= link_to 'Edit', '#'
