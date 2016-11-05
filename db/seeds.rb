@@ -1,4 +1,11 @@
-puts 'Seeding Users'
+puts 'Seeding Roles'
+
+Role.create :name => 'admin'
+print '.'
+Role.create :name => 'driver'
+print '.'
+
+puts "\nSeeding Users"
 
 20.times do
   User.create(
@@ -8,6 +15,23 @@ puts 'Seeding Users'
   )
 
   print '.'
+end
+
+users = [
+          ['Enzo', 'Doromal'],
+          ['Nikolas', 'Escobal'],
+          ['John', 'Ching'],
+        ]
+
+users.each do |user|
+  u = User.create(
+    :first_name => user[0],
+    :last_name => user[1],
+    :phone => Faker::PhoneNumber.cell_phone
+  )
+
+  u.role = Role.second
+  u.save
 end
 
 puts "\nSeeding Points"
