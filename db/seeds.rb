@@ -24,19 +24,31 @@ points.each do |point|
   print '.'
 end
 
+puts "\nSeeding Schedules"
+
+times = ['6:30', '7:40', '8:00', '17:00', '19:00']
+
+times.each do |time|
+  Schedule.create :time => time
+  print '.'
+end
+
 puts "\nSeeding Routes"
 
 routes = [
-          [1,2],
-          [2,1],
-          [3,2],
-          [2,3],
-          [1,4],
-          [4,1]
+          [1,2,1,2,3],
+          [2,1,4,5],
+          [3,2,1,2,3],
+          [2,3,4,5],
+          [1,4,1,2,3],
+          [4,1,4,5]
          ]
 
 routes.each do |route|
-  Route.create :origin_id => route[0], :destination_id => route[1], :price => 90
+  r = Route.create(
+    :origin_id => route[0], :destination_id => route[1], :price => 90
+  )
+  r.schedule_ids = route[2, (route.length - 1)]
   print '.'
 end
 

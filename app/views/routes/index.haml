@@ -10,6 +10,7 @@
         %th ID
         %th Pickup
         %th Drop off
+        %th Schedules
         %th Price
         %th
     %tbody
@@ -18,5 +19,7 @@
           %td= route.id
           %td= route.origin.name
           %td= route.destination.name
+          %td
+            %strong= route.schedules.pluck(:time).join(', ')
           %td= number_to_currency route.price, :unit => 'Php '
           %td= link_to 'Edit', '#'
