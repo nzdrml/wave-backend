@@ -57,6 +57,9 @@ group :development do
 
   # Use faker for seeding fake data
   gem 'faker', '~> 1.6.6'
+
+  # Use annotate to annotate models
+  gem 'annotate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
