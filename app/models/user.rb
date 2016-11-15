@@ -9,10 +9,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  role_id    :integer
+#  email      :string           not null
 #
 
 class User < ApplicationRecord
 
-  belongs_to :role
-  
+  belongs_to :role, :optional => true
+
 end

@@ -1,5 +1,5 @@
 #users.col-md-12
-  = button_tag '+ New User', :type => 'button', :class => 'btn btn-outline-primary'
+  = link_to '+ New User', [:new, :user], :class => 'btn btn-outline-primary'
 
   %br
   %br
@@ -17,4 +17,4 @@
           %td= user.id
           %td= "#{user.first_name} #{user.last_name}"
           %td Php 250.00
-          %td= link_to 'Edit', '#'
+          %td= link_to 'Edit', [:edit, user]

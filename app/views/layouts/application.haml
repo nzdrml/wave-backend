@@ -11,12 +11,20 @@
   %body
     .container
       %nav.navbar.navbar-dark.bg-primary
-        .navbar-brand= link_to 'RideWave Admin', '#'
+        .navbar-brand= link_to 'RideWave Admin', :root
         %ul.nav.navbar-nav
           %li.nav-item= link_to 'Trips', :trips, :class => 'nav-link'
           %li.nav-item= link_to 'Users', :users, :class => 'nav-link'
           %li.nav-item= link_to 'Routes', :routes, :class => 'nav-link'
           %li.nav-item= link_to 'Points', :points, :class => 'nav-link'
         #persona.float-md-right Hi, Enzo
+      .row
+        .col-md-12
+          #errors
+            - if flash.present?
+              .row
+                .col-md-12
+                  - flash.each do |name, msg|
+                    = alert_tag msg, name, :dismissable => true
       .row
         = yield
