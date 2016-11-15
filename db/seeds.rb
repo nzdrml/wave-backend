@@ -11,7 +11,8 @@ puts "\nSeeding Users"
   User.create(
     :first_name => Faker::Name.first_name,
     :last_name => Faker::Name.last_name,
-    :phone => Faker::PhoneNumber.cell_phone
+    :phone => Faker::PhoneNumber.cell_phone,
+    :email => Faker::Internet.email
   )
 
   print '.'
@@ -27,7 +28,8 @@ users.each do |user|
   u = User.create(
     :first_name => user[0],
     :last_name => user[1],
-    :phone => Faker::PhoneNumber.cell_phone
+    :phone => Faker::PhoneNumber.cell_phone,
+    :email => Faker::Internet.email
   )
 
   u.role = Role.second
