@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161115061606) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string "time", default: "06:30", null: false
+    t.string "time", null: false
   end
 
   create_table "users", force: :cascade do |t|

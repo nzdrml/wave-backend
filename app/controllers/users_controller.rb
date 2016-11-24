@@ -1,40 +1,39 @@
 class UsersController < ApplicationController
 
   def new
-    @model = User.new
-    @form = UserForm.new @model
+    @form = UserForm.new User.new
   end
 
   def create
-    @model = User.new
-    @form = UserForm.new @model
+    @form = UserForm.new User.new
 
     if @form.validate params[:user]
       @form.save
 
-      render :index
+      self.succeed_to :users
     else
-      render :new
+      self.error_to :new
     end
   end
 
   def edit
-    @model = User.find params[:id]
-    @form = UserForm.new @model
+    @form = UserForm.new User.find params[:id]
   end
 
   def update
-    @model = User.find params[:id]
-    @form = UserForm.new @model
+    @form = UserForm.new User.find params[:id]
 
     if @form.validate params[:user]
       @form.save
-
-      render :index
+      self.succeed_to :users
     else
-      self.error
-      render :edit
+      self.error_to :edit
     end
+  end
+
+  def destroy
+    user = User.find_by_id params[:id]
+    user && user.destroy ? self.succeed_to(:users) : self.error_to(:index)
   end
 
 end

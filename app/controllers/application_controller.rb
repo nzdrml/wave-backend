@@ -5,11 +5,24 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def succeed_to route
+    redirect_to route, :notice => 'Success!'
+  end
+
+  def error_to template
+    self.error
+    render template
+  end
+
   def error
     error_message = ''
 
-    @form.errors.each do |attribute, message|
-      error_message << "#{attribute.to_s.humanize} #{message}<br>"
+    if @form
+      @form.errors.each do |attribute, message|
+        error_message << "#{attribute.to_s.humanize} #{message}<br>"
+      end
+    else
+      error_message = 'An Error Occured.'
     end
 
     flash.now[:error] = error_message

@@ -1,6 +1,7 @@
 !!!
 %html{ :lang => 'en' }
   %head
+    = csrf_meta_tags
     = stylesheet_link_tag 'application', :media => 'all'
     = javascript_include_tag 'application'
     %meta{ :charset => 'utf-8' }/
@@ -16,6 +17,7 @@
           %li.nav-item= link_to 'Trips', :trips, :class => 'nav-link'
           %li.nav-item= link_to 'Users', :users, :class => 'nav-link'
           %li.nav-item= link_to 'Routes', :routes, :class => 'nav-link'
+          %li.nav-item= link_to 'Schedules', :schedules, :class => 'nav-link'
           %li.nav-item= link_to 'Points', :points, :class => 'nav-link'
         #persona.float-md-right Hi, Enzo
       .row

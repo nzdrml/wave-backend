@@ -1,0 +1,20 @@
+#schedules.col-md-12
+  = link_to '+ New Schedule', [:new, :schedule], :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Schedule
+        %th
+        %th
+    %tbody
+      - Schedule.all.each do |schedule|
+        %tr
+          %td= schedule.id
+          %td= schedule.time
+          %td= link_to 'Edit', [:edit, schedule]
+          %td= link_to 'Delete', schedule, :method => :delete, :data => { :confirm => 'Are you sure?' }

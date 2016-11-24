@@ -1,0 +1,16 @@
+= form_for @form, :html => {:class => 'form'} do |f|
+  .form-fields.container
+    .row
+      .col-md-8.offset-md-2
+        .form-group.col-md-12
+          = f.label :point_name, :class => 'control-label col-md-3'
+          .col-md-9= f.text_field :name, :placeholder => 'Point name', :class => 'form-control'
+        .form-group.col-md-12
+          = f.label :latitude, :class => 'control-label col-md-3'
+          .col-md-9= f.text_field :latitude, :placeholder => 'Latitude', :class => 'form-control'
+        .form-group.col-md-12
+          = f.label :longitude, :class => 'control-label col-md-3'
+          .col-md-9= f.text_field :longitude, :placeholder => 'Latitude', :class => 'form-control'
+        .form-group.col-md-12.submit-button
+          .col-md-3.offset-md-3= f.submit 'Save', :class => 'btn btn-primary col-md-12'
+          .col-md-3= link_to 'Cancel', :points, :class => 'btn btn-outline-danger col-md-12'

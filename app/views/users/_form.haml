@@ -19,4 +19,4 @@
           .col-md-2= f.select :role_id, options_from_collection_for_select(Role.all, 'id', 'name', @form.role_id), {:include_blank => 'None'}, {:class => 'form-control'}
         .form-group.col-md-12.submit-button
           .col-md-3.offset-md-3= f.submit 'Save', :class => 'btn btn-primary col-md-12'
-          .col-md-3= f.submit 'Cancel', :class => 'btn btn-outline-danger col-md-12'
+          .col-md-3= link_to 'Cancel', :users, :class => 'btn btn-outline-danger col-md-12'
