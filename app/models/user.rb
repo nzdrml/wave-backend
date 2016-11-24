@@ -16,4 +16,9 @@ class User < ApplicationRecord
 
   belongs_to :role, :optional => true
 
+
+  scope :drivers, -> do
+    joins(:role).where :roles => { :id => Role.find_by_name('driver').try(:id) }
+  end
+
 end

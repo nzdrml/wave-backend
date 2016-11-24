@@ -1,60 +1,28 @@
 #trips
 
-  .col-md-4= button_tag '+ New Trip', :type => 'button', :class => 'btn btn-outline-primary'
+  .col-md-4= link_to '+ New Trip', [:new, :trip], :class => 'btn btn-outline-primary'
 
   %br
   %br
 
-  .col-md-4
-    .card
-      .card-header
-        %strong 6:30am - Acacia Estates to Ayala
-      .card-block
-        %p.card-text
-          %strong John Ching
-          %br
-          %strong Toyota Vios - AA BH64
-        .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
-      %ul.list-group.list-group-flush
-        - User.all.limit(5).each do |user|
+  - trips.each do |trip|
+    .col-md-6
+      .card
+        .card-header
+          %strong= trip
+        .card-block
+          %p.card-text
+            %strong= trip.driver
+            %br
+            %strong Toyota Vios - AA BH64
+          .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
+        %ul.list-group.list-group-flush
+          - User.all.limit(5).each do |user|
+            %li.list-group-item
+              = "#{user.first_name} #{user.last_name}"
+              .payment.float-md-right Php 80.00
           %li.list-group-item
-            = "#{user.first_name} #{user.last_name}"
-            .payment.float-md-right Php 80.00
-      .card-block
-        = link_to 'Approve Trip', '#', :class => 'btn btn-primary'
-
-  .col-md-4
-    .card
-      .card-header.bg-success
-        %strong 7:40am - UP Town to Ayala
-      .card-block
-        %p.card-text
-          %strong Nikolas Escobal
-          %br
-          %strong Mitsubishi Mirage - OW 1256
-        .driver.float-md-right= image_tag 'nik.jpg', :class => 'rounded-circle'
-      %ul.list-group.list-group-flush
-        - User.all.offset(5).limit(4).each do |user|
-          %li.list-group-item
-            .name= "#{user.first_name} #{user.last_name}"
-            .payment.paid.float-md-right Paid
-      .card-block
-        = link_to 'Cancel Trip', '#', :class => 'btn btn-danger'
-
-  .col-md-4
-    .card
-      .card-header
-        %strong 8:30am - Acacia Estates to Greenbelt
-      .card-block
-        %p.card-text
-          %strong Enzo Doromal
-          %br
-          %strong Hi Ace - BR 6645
-        .driver.float-md-right= image_tag 'enzo.jpg', :class => 'rounded-circle'
-      %ul.list-group.list-group-flush
-        - User.all.offset(9).limit(11).each do |user|
-          %li.list-group-item
-            = "#{user.first_name} #{user.last_name}"
-            .payment.paid.float-md-right Paid
-      .card-block
-        = link_to 'Approve Trip', '#', :class => 'btn btn-primary'
+            = link_to 'Add Rider', '#', :class => 'btn btn-success'
+        .card-block
+          = link_to 'Approve Trip', '#', :class => 'btn btn-primary'
+          = link_to 'Edit Trip', [:edit, trip.object], :class => 'btn btn-outline-primary'

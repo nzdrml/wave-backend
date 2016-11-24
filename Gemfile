@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 # User reform to separate form logic from views
 gem 'reform-rails', '~> 0.1.7'
 
+# Use draper to decorate models in views
+gem 'draper', github: 'drapergem/draper'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
