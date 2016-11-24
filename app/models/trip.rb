@@ -6,7 +6,7 @@
 #  driver_id   :integer
 #  route_id    :integer          not null
 #  schedule_id :integer          not null
-#  state       :integer          default("unprocessed")
+#  state       :integer          default("pending")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
