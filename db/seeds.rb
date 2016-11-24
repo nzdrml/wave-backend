@@ -52,7 +52,7 @@ end
 
 puts "\nSeeding Schedules"
 
-times = ['6:30', '7:40', '8:00', '17:00', '19:00']
+times = ['06:30', '07:40', '08:00', '17:00', '19:00']
 
 times.each do |time|
   Schedule.create :time => time
