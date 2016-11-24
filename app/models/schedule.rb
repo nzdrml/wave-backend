@@ -3,7 +3,7 @@
 # Table name: schedules
 #
 #  id   :integer          not null, primary key
-#  time :string           default("06:30"), not null
+#  time :string           not null
 #
 
 class Schedule < ApplicationRecord

@@ -3,7 +3,7 @@
 # Table name: routes
 #
 #  id             :integer          not null, primary key
-#  price          :decimal(8, 2)    default(0.0)
+#  price          :decimal(8, 2)    not null
 #  origin_id      :integer          not null
 #  destination_id :integer          not null
 #
