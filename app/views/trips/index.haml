@@ -1,28 +1,32 @@
-#trips
-
-  .col-md-4= link_to '+ New Trip', [:new, :trip], :class => 'btn btn-outline-primary'
+#trips.col-md-12
+  = link_to '+ New Trip', [:new, :trip], :class => 'btn btn-outline-primary'
 
   %br
   %br
 
-  - trips.each do |trip|
-    .col-md-6
-      .card
-        .card-header
-          %strong= trip
-        .card-block
-          %p.card-text
-            %strong= trip.driver
-            %br
-            %strong Toyota Vios - AA BH64
-          .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
-        %ul.list-group.list-group-flush
-          - User.all.limit(5).each do |user|
-            %li.list-group-item
-              = "#{user.first_name} #{user.last_name}"
-              .payment.float-md-right Php 80.00
-          %li.list-group-item
-            = link_to 'Add Rider', '#', :class => 'btn btn-success'
-        .card-block
-          = link_to 'Approve Trip', '#', :class => 'btn btn-primary'
-          = link_to 'Edit Trip', [:edit, trip.object], :class => 'btn btn-outline-primary'
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Route
+        %th Schedule
+        %th Driver
+        %th Vehicle
+        %th Status
+        %th Riders
+        %th Revenue
+        %th
+        %th
+    %tbody
+      - trips.each do |trip|
+        %tr
+          %td= trip.id
+          %td= trip
+          %td= trip.trip_date
+          %td= trip.driver
+          %td Toyota Vios - AAH215
+          %td= trip.state.humanize
+          %td 5
+          %td 600.00
+          %td= link_to 'Edit', [:edit, trip]
+          %td= link_to 'Delete', trip, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -3,7 +3,11 @@ class TripsController < ApplicationController
   decorates_assigned :trip, :trips
 
   def index
-    @trips = Trip.all
+    @trips = Trip.by_date
+  end
+
+  def upcoming
+    @trips = Trip.active.by_earliest
   end
 
   def new
@@ -40,6 +44,18 @@ class TripsController < ApplicationController
   def destroy
     trip = Trip.find_by_id params[:id]
     trip && trip.destroy ? self.succeed_to(:trips) : self.error_to(:index)
+  end
+
+  def confirm
+    trip = Trip.find_by_id params[:id]
+    trip && trip.confirmed! ?
+      self.succeed_to([:upcoming, :trips]) :
+      self.error_to(:index)
+  end
+
+  def cancel
+    trip = Trip.find_by_id params[:id]
+    trip && trip.cancelled! ? self.succeed_to(:trips) : self.error_to(:index)
   end
 
 end

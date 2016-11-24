@@ -9,6 +9,9 @@
           = f.label :route, :class => 'control-label col-md-3'
           .col-md-9= f.select :route_id, options_from_collection_for_select(Route.all.decorate, 'id', 'to_s', @form.route_id), {:include_blank => 'None'}, {:class => 'form-control'}
         .form-group.col-md-12
+          = f.label :date, :class => 'control-label col-md-3'
+          .col-md-9= f.date_field :trip_date, :class => 'form-control'
+        .form-group.col-md-12
           = f.label :time, :class => 'control-label col-md-3'
           .col-md-9= f.select :schedule_id, options_from_collection_for_select(Schedule.all.decorate, 'id', 'to_s', @form.schedule_id), {:include_blank => 'None'}, {:class => 'form-control'}
         .form-group.col-md-12.submit-button

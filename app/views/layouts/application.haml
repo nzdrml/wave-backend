@@ -14,6 +14,7 @@
       %nav.navbar.navbar-dark.bg-primary
         .navbar-brand= link_to 'RideWave Admin', :root
         %ul.nav.navbar-nav
+          %li.nav-item= link_to 'Upcoming', [:upcoming, :trips], :class => 'nav-link'
           %li.nav-item= link_to 'Trips', :trips, :class => 'nav-link'
           %li.nav-item= link_to 'Users', :users, :class => 'nav-link'
           %li.nav-item= link_to 'Routes', :routes, :class => 'nav-link'
