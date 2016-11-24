@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20161115061606) do
   end
 
   create_table "routes", force: :cascade do |t|
-    t.decimal "price",          precision: 8, scale: 2, default: "0.0"
-    t.integer "origin_id",                                              null: false
-    t.integer "destination_id",                                         null: false
+    t.decimal "price",          precision: 8, scale: 2, null: false
+    t.integer "origin_id",                              null: false
+    t.integer "destination_id",                         null: false
     t.index ["destination_id"], name: "index_routes_on_destination_id", using: :btree
     t.index ["origin_id"], name: "index_routes_on_origin_id", using: :btree
   end

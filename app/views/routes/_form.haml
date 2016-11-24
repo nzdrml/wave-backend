@@ -1,0 +1,19 @@
+= form_for @form, :html => {:class => 'form'} do |f|
+  .form-fields.container
+    .row
+      .col-md-8.offset-md-2
+        .form-group.col-md-12
+          = f.label :origin, :class => 'control-label col-md-3'
+          .col-md-9= f.select :origin_id, options_from_collection_for_select(Point.all, 'id', 'name', @form.origin_id), {:include_blank => 'None'}, {:class => 'form-control'}
+        .form-group.col-md-12
+          = f.label :destination, :class => 'control-label col-md-3'
+          .col-md-9= f.select :destination_id, options_from_collection_for_select(Point.all, 'id', 'name', @form.destination_id), {:include_blank => 'None'}, {:class => 'form-control'}
+        .form-group.col-md-12
+          = f.label :price, :class => 'control-label col-md-3'
+          .col-md-9= f.text_field :price, :placeholder => '0.00', :value => number_with_precision(@form.price, :precision => 2), :class => 'form-control'
+        .form-group.col-md-12.schedule-checkboxes
+          = f.label :schedules, :class => 'control-label col-md-3'
+          .col-md-9= f.collection_check_boxes :schedule_ids, Schedule.all, :id, :time
+        .form-group.col-md-12.submit-button
+          .col-md-3.offset-md-3= f.submit 'Save', :class => 'btn btn-primary col-md-12'
+          .col-md-3= link_to 'Cancel', :routes, :class => 'btn btn-outline-danger col-md-12'

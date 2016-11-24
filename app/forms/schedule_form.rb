@@ -11,9 +11,22 @@ class ScheduleForm < Reform::Form
 
 
   def time= value
-    # Removes leading 0s from time format for uniformity.
-    value[0] = '' if value[0] == '0'
+    self.sanitize_time value
     super value
+  end
+
+
+
+  protected
+
+  # Adds/Removes leading 0s for standardization
+  def sanitize_time value
+    unless value.length > 5 && value[0] == '0'
+      value.prepend '0' if value.length == 4
+      return value
+    end
+    value[0] = ''
+    self.sanitize_time value
   end
 
 end
