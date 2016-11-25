@@ -9,14 +9,23 @@
       %tr
         %th ID
         %th Name
+        %th Phone
         %th Balance
         %th
         %th
+        %th
     %tbody
-      - User.all.each do |user|
+      - users.each do |user|
         %tr
           %td= user.id
-          %td= "#{user.first_name} #{user.last_name}"
-          %td Php 250.00
+          %td= user
+          %td= user.phone
+          %td= user.balance
+          %td
+            = button_tag 'Top up', :class => 'btn btn-outline-primary top-up'
+            = form_tag [:top_up, user], :method => :post, :class => 'form top-up-form' do
+              .col-md-5= text_field_tag :amount, nil, :placeholder => 'Amount', :class => 'form-control'
+              = submit_tag 'Done', :class => 'btn btn-success'
+              = button_tag 'Cancel', :class => 'btn btn-outline-danger top-up-cancel'
           %td= link_to 'Edit', [:edit, user]
           %td= link_to 'Delete', user, :method => :delete, :data => { :confirm => 'Are you sure?' }

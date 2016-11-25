@@ -20,12 +20,12 @@
             %strong Toyota Vios - AA BH64
           .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
         %ul.list-group.list-group-flush
-          - User.all.limit(5).each do |user|
+          - trip.riders.each do |rider|
             %li.list-group-item
-              = "#{user.first_name} #{user.last_name}"
-              .payment.float-md-right Php 80.00
+              = rider
+              .payment.float-md-right= trip.get_balance_for_rider rider
           %li.list-group-item
-            = link_to 'Add Rider', '#', :class => 'btn btn-success'
+            = link_to 'Add Rider', [:add_riders, trip], :class => 'btn btn-success'
         .card-block
           - if trip.pending?
             = link_to 'Confirm Trip', [:confirm, trip], :class => 'btn btn-primary'

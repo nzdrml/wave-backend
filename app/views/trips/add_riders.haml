@@ -1,0 +1,24 @@
+#users.col-md-12
+  = link_to 'Done', [:upcoming, :trips], :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Name
+        %th Balance
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.id
+          %td= "#{user.first_name} #{user.last_name}"
+          %td= user.balance
+          %td
+            - if trip.riders.include? user
+              = link_to 'Remove', [:remove_rider, trip, :user_id => user.id], :class => 'btn btn-outline-danger'
+            - else
+              = link_to 'Add', [:add_rider, trip, :user_id => user.id], :class => 'btn btn-success'
