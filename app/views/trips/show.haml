@@ -1,0 +1,53 @@
+#trip
+
+  .col-md-4
+    = link_to 'All Trips', :trips, :class => 'btn btn-outline-primary'
+    = link_to '+ New Trip', [:new, :trip], :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  .col-md-6
+    .card
+      .card-header{:class => "#{trip.bg_class}"}
+        %strong
+          = trip
+          %br
+          = trip.trip_date
+          %br
+          Price:
+          = trip.price
+          %br
+          Revenue:
+          = trip.revenue
+      .card-block
+        %p.card-text
+          %strong= trip.driver
+          %br
+          %strong Toyota Vios - AA BH64
+        .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
+      %ul.list-group.list-group-flush
+        - trip.riders.each do |rider|
+          %li.list-group-item
+            = rider
+            .payment.float-md-right= trip.get_balance_for_rider rider
+        - if trip.pending? || trip.confirmed?
+          %li.list-group-item
+            = link_to 'Add Rider', [:add_riders, trip], :class => 'btn btn-success'
+      .card-block
+        - if trip.pending?
+          = link_to 'Confirm Trip', [:confirm, trip], :class => 'btn btn-primary'
+
+        - if trip.confirmed?
+          = link_to 'Start Trip', [:start, trip], :class => 'btn btn-success'
+
+        - if trip.started?
+          = link_to 'Finish Trip', [:finish, trip], :class => 'btn btn-primary'
+
+        - if trip.confirmed? || trip.started?
+          = link_to 'Cancel Trip', [:cancel, trip], :class => 'btn btn-danger'
+
+        - if trip.pending? || trip.confirmed?
+          = link_to 'Edit Trip', [:edit, trip], :class => 'btn btn-outline-primary'
+
+        = link_to 'Delete Trip', trip, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-outline-danger'

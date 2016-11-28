@@ -1,0 +1,20 @@
+#users.col-md-12
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th Rider
+        %th Trip
+        %th Phone
+        %th Payable
+        %th Balance
+        %th
+    %tbody
+      - Booking.with_remaining_balance.decorate.each do |booking|
+        %tr
+          %td= booking.rider
+          %td= link_to booking.trip.to_s, booking.trip
+          %td= booking.phone
+          %td= booking.balance
+          %td= booking.rider.balance
+          %td= link_to 'Collect', [:collect_balance, booking], :class => 'btn btn-primary'

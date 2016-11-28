@@ -21,7 +21,7 @@
       - trips.each do |trip|
         %tr
           %td= trip.id
-          %td= trip
+          %td= link_to trip.to_s, trip
           %td= trip.trip_date
           %td= trip.driver
           %td Toyota Vios - AAH215
@@ -29,6 +29,6 @@
           %td= trip.riders.count
           %td= trip.revenue
           %td
-            - unless trip.finished?
+            - if trip.pending? || trip.confirmed?
               = link_to 'Edit', [:edit, trip]
           %td= link_to 'Delete', trip, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       member do
         post 'top_up'
       end
+
+      collection do
+        get 'accounts_payable'
+      end
     end
 
     resources :trips do
@@ -22,6 +26,12 @@ Rails.application.routes.draw do
 
       collection do
         get 'upcoming'
+      end
+    end
+
+    resources :bookings, :only => :collect_balance do
+      member do
+        get 'collect_balance'
       end
     end
 

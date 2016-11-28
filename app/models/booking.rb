@@ -10,6 +10,13 @@ class Booking < ApplicationRecord
   belongs_to :trip
 
 
+  scope :with_remaining_balance, -> do
+    joins(:trip).
+      where(:trips => {:state => [1,2,3]}).
+      where 'bookings.balance > ?', 0
+  end
+
+
   def set_balance_from_trip
     return unless self.trip
     self.set_balance self.trip.route.price
