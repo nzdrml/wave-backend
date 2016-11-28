@@ -15,9 +15,10 @@
 class User < ApplicationRecord
 
   include Balanceable
-  
+
 
   belongs_to :role, :optional => true
+  has_one :vehicle, :foreign_key => 'driver_id'
 
   has_many :bookings
   has_many :trips, :through => :bookings

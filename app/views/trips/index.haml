@@ -24,7 +24,7 @@
           %td= link_to trip.to_s, trip
           %td= trip.trip_date
           %td= trip.driver
-          %td Toyota Vios - AAH215
+          %td= trip.driver.vehicle
           %td= trip.state.humanize
           %td= trip.riders.count
           %td= trip.revenue

@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :vehicles
     resources :routes
     resources :points
     resources :schedules

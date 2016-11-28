@@ -1,0 +1,24 @@
+#vehicles.col-md-12
+  = link_to '+ New Vehicle', [:new, :vehicle], :class => 'btn btn-outline-primary'
+
+  %br
+  %br
+
+  %table.table.table-striped
+    %thead.bg-primary
+      %tr
+        %th ID
+        %th Make
+        %th Plate
+        %th Driver
+        %th
+        %th
+    %tbody
+      - Vehicle.all.each do |vehicle|
+        %tr
+          %td= vehicle.id
+          %td= vehicle.make
+          %td= vehicle.plate
+          %td= vehicle.driver.try :decorate
+          %td= link_to 'Edit', [:edit, vehicle]
+          %td= link_to 'Delete', vehicle, :method => :delete, :data => { :confirm => 'Are you sure?' }

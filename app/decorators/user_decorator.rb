@@ -2,6 +2,10 @@ class UserDecorator < Draper::Decorator
 
   delegate_all
 
+
+  decorates_association :vehicle
+
+
   def to_s
     "#{object.first_name} #{object.last_name}"
   end

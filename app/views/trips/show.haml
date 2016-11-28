@@ -24,8 +24,7 @@
         %p.card-text
           %strong= trip.driver
           %br
-          %strong Toyota Vios - AA BH64
-        .driver.float-md-right= image_tag 'john.jpg', :class => 'rounded-circle'
+          %strong= trip.driver.vehicle
       %ul.list-group.list-group-flush
         - trip.riders.each do |rider|
           %li.list-group-item

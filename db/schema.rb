@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125063139) do
+ActiveRecord::Schema.define(version: 20161128094017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(version: 20161125063139) do
     t.integer  "role_id"
     t.string   "email",                                              null: false
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string  "make",      null: false
+    t.string  "plate",     null: false
+    t.integer "driver_id"
+    t.index ["driver_id"], name: "index_vehicles_on_driver_id", using: :btree
   end
 
 end
