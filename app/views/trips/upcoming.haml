@@ -8,11 +8,13 @@
   - trips.each do |trip|
     .col-md-6
       .card
-        .card-header{:class => "#{'bg-success' if trip.confirmed?}"}
+        .card-header{:class => "#{trip.bg_class}"}
           %strong
             = trip
             %br
             = trip.trip_date
+            %br
+            = trip.price
         .card-block
           %p.card-text
             %strong= trip.driver
@@ -32,6 +34,11 @@
             = link_to 'Edit Trip', [:edit, trip], :class => 'btn btn-outline-primary'
 
           - elsif trip.confirmed?
+            = link_to 'Start Trip', [:start, trip], :class => 'btn btn-success'
+            = link_to 'Cancel Trip', [:cancel, trip], :class => 'btn btn-danger'
+
+          - elsif trip.started?
+            = link_to 'Finish Trip', [:finish, trip], :class => 'btn btn-primary'
             = link_to 'Cancel Trip', [:cancel, trip], :class => 'btn btn-danger'
 
           - if trip.cancelled? || trip.pending?

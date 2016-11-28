@@ -56,12 +56,13 @@ ActiveRecord::Schema.define(version: 20161125063139) do
 
   create_table "trips", force: :cascade do |t|
     t.integer  "driver_id"
-    t.integer  "route_id",                null: false
-    t.integer  "schedule_id",             null: false
-    t.integer  "state",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.date     "trip_date",               null: false
+    t.integer  "route_id",                                            null: false
+    t.integer  "schedule_id",                                         null: false
+    t.integer  "state",                               default: 0
+    t.decimal  "balance",     precision: 8, scale: 2, default: "0.0"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.date     "trip_date",                                           null: false
     t.index ["driver_id"], name: "index_trips_on_driver_id", using: :btree
     t.index ["route_id"], name: "index_trips_on_route_id", using: :btree
     t.index ["schedule_id"], name: "index_trips_on_schedule_id", using: :btree

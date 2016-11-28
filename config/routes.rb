@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   constraints :subdomain => 'admin' do
-    root 'trips#index'
+    root 'trips#upcoming'
 
     resources :users do
       member do
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       member do
         get 'confirm'
         get 'cancel'
+        get 'start'
+        get 'finish'
         get 'add_rider'
         get 'add_riders'
         get 'remove_rider'

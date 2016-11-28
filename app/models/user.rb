@@ -14,6 +14,9 @@
 
 class User < ApplicationRecord
 
+  include Balanceable
+  
+
   belongs_to :role, :optional => true
 
   has_many :bookings
